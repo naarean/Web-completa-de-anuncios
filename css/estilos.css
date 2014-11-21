@@ -1,0 +1,55 @@
+body{
+	margin: 0px;
+	font-size: 13px;
+	background: #f1f1f1;
+	font-family: 'Lato', sans-serif;
+}
+
+.encabezado{
+	margin: 5px auto; /*asi se queda siempre en el centro*/
+	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
+	height: 100px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.menu{
+	margin: 5px auto; /*asi se queda siempre en el centro*/
+	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
+	height: 40px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.cuerpo{
+	margin: 5px auto; /*asi se queda siempre en el centro*/
+	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
+	min-height: 600px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.pie{
+	margin: 5px auto; /*asi se queda siempre en el centro*/
+	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
+	height: 60px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+#logo{
+	padding: 4px;
+	float: left;
+}
+
+.item_menu{
+	float: left;
+	font-size: 16px;
+	padding: 10px;
+}
+
+.item_menu_login{
+	float: right;
+	font-size: 16px;
+	padding: 10px;
+}
