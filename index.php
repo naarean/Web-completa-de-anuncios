@@ -1,5 +1,7 @@
+<?php require_once('conexion.php');?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="iso-8859-1">
 	<title>Curso página 2014</title>
@@ -16,12 +18,12 @@
 	</header>
 
 	<nav class="menu">
-		<span class="item_menu">Incio</span>
-		<span class="item_menu">Posts</span>
-		<span class="item_menu">Contacto</span>
+		<li class="item_menu">Incio</li>
+		<li class="item_menu">Posts</li>
+		<li class="item_menu">Contacto</span>
 
-		<span class="item_menu_login">Inciar sesi&oacute;n</span>
-		<span class="item_menu_login">Registrarse</span>
+		<li class="item_menu_login">Inciar sesi&oacute;n</li>
+		<li class="item_menu_login">Registrarse</li>
 	</nav>
 
 	<div class="cuerpo">
