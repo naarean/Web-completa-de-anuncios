@@ -132,3 +132,14 @@ a:hover{
 .imagen_anuncio{
 	margin-bottom: 8px;
 }
+
+#listado_anuncios{
+	height: 120px;
+	border: 1px solid #ddd;
+	margin: 8px;
+}
+
+.foto_miniatura_anuncio{
+	padding: 10px;
+	float: left;
+}

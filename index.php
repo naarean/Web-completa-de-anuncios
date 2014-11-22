@@ -26,7 +26,7 @@
 
 
 	<div class="cuerpo">
-		
+		<?php include ('inc/listar-anuncios.php') ?>
 	</div>
 
 	<?php include ('inc/footer.php') ?>
