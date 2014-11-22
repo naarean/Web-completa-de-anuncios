@@ -3,6 +3,10 @@
 	<li class="item_menu">Posts</li>
 	<li class="item_menu">Contacto</li>
 
+	<?php  if (isset($_SESSION['iduser'])) { ?> <!-- si esta loguado puedes agregar anuncios -->
+		<a href="<?php echo $dato['0']?>agregar.php"><li class="item_menu">Agregar</li></a>
+	<?php } ?>
+	
 	<?php 
 		if (!isset($_SESSION['iduser'])) //que solo muestre iniciar sesion y registrarse si no ha sido iniciada
 		{ ?>

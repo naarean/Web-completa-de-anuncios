@@ -43,10 +43,11 @@ a:hover{
 
 .cuerpo{
 	margin: 5px auto; /*asi se queda siempre en el centro*/
-	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
+	max-width: 949px; /*indicando un maximo permites que sea mas pequeño*/
 	min-height: 600px;
 	background: #fff;
 	border: 1px solid #ddd;
+	padding: 8px
 }
 
 .pie{
@@ -112,4 +113,22 @@ a:hover{
 	background: #ccc;
 	text-align: center;
 	line-height: 38px; /*para que el texto se alinee verticalmente*/
+}
+
+.titulo_anuncio{
+	width: 400px;
+	height: 20px;
+	padding: 4px;
+	margin-bottom: 8px;
+}
+
+.textarea_anuncio{
+	width: 400px;
+	height: 200px;
+	padding: 4px;
+	margin-bottom: 8px;
+}
+
+.imagen_anuncio{
+	margin-bottom: 8px;
 }
