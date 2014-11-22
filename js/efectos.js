@@ -25,3 +25,13 @@ function login_ajax(user, pass){
 	});
 	location.reload();
 }
+
+//CREA UNA COOKIE PARA RECORDAR QUE HA ACEPTADO LA POLÍTICA DE COOKIES
+function crear_cookie(valor){
+	$.ajax({
+		type: 'POST',
+		url: urlWeb + 'inc/cookie.php',
+		data: 'valor=' + valor
+	});
+	$('#cookies').css("display","none"); //que oculte la capa de aceptar cookies
+}
