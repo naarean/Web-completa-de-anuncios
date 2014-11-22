@@ -15,6 +15,20 @@
 	<script src="js/efectos.js">></script>
 </head>
 <body>
+	<script>
+		function crear_cookie(valor){
+			$.ajax({
+				type: 'POST',
+				url: urlWeb + 'inc/cookie.php',
+				data: 'valor=' + valor
+			});
+			$('#cookies').css("display","none"); //que oculte la capa de aceptar cookies
+		}
+	</script>
+	<?php if (!isset($_COOKIE['galleta'])) { ?>
+		<div id="cookies">Este sitio web utiliza cookies <a class="cursor" onClick="crear_cookie('yes');">Aceptar</a></div>
+	<?php } ?>
+
 	<header class="encabezado">
 		<div id="logo">
 			<a href="<?php echo $dato['0']?>"><img src="img/logo.png" width="220" height="80"></a>

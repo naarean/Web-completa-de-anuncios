@@ -22,7 +22,7 @@ a{
 }
 
 a:hover{
-	color: #ccc;
+	color: #666;
 }
 
 .encabezado{
@@ -104,4 +104,12 @@ a:hover{
 	border-radius: 15px;
 	padding-bottom: 15px;
 	font-size: 14px;
+}
+
+#cookies{
+	height: 40px;
+	width: 100%;
+	background: #ccc;
+	text-align: center;
+	line-height: 38px; /*para que el texto se alinee verticalmente*/
 }
