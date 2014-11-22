@@ -21,6 +21,7 @@ function login_ajax(user, pass){
 		url: urlWeb + 'inc/login.php',
 		data: 'user=' + user + '&pass=' + pass,
 		success: function(html) {
+			alert('Comprobando...');
 	   }
 	});
 	location.reload();

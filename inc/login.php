@@ -8,7 +8,7 @@ require_once('../conexion.php');
     mysql_select_db($database_conexion, $conexion);
     $query_DatosLogin = sprintf("SELECT * FROM z_users WHERE user=%s AND password=%s",
     									GetSQLValueString($_POST['user'], "text"),
-    									GetSQLValueString($_POST['pass'], "text"));
+    									GetSQLValueString(md5($_POST['pass']), "text")); //contraseña está en MD5
     $DatosLogin = mysql_query($query_DatosLogin, $conexion) or die(mysql_error());
     $row_DatosLogin = mysql_fetch_assoc($DatosLogin);
     $totalRows_DatosLogin = mysql_num_rows($DatosLogin);
@@ -19,6 +19,10 @@ require_once('../conexion.php');
     {
     	$_SESSION['iduser'] = $row_DatosLogin['id'];
     	$_SESSION['nombreuser'] = $row_DatosLogin['user'];
+    }
+    else
+    {
+        echo "DATOS DE ACCESO INCORRECTOS";
     }
     
     mysql_free_result($DatosLogin);

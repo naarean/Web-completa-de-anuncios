@@ -12,7 +12,7 @@ if ((isset($_GET['cerrar'])) &&($_GET['cerrar']=="yes"))
     unset($_SESSION['nombreuser']);
     
         
-    $logoutGoTo = 'http://localhost/curso2014/'; //donde queremos ir al cerrar sesión
+    $logoutGoTo = $dato['0']; //donde queremos ir al cerrar sesión, en este caso la página principal
       
     header("Location: $logoutGoTo");
     exit;

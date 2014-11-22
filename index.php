@@ -1,5 +1,7 @@
 <?php require_once('conexion.php');?>
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,7 +24,7 @@
 	<nav class="menu">
 		<a href="<?php echo $dato['0']?>"><li class="item_menu">Incio</li></a>
 		<li class="item_menu">Posts</li>
-		<li class="item_menu">Contacto</span>
+		<li class="item_menu">Contacto</li>
 
 		<?php 
 			if (!isset($_SESSION['iduser'])) //que solo muestre iniciar sesion y registrarse si no ha sido iniciada
