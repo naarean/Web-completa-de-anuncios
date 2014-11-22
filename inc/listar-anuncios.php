@@ -19,7 +19,7 @@
 		<?php } ?>
 		<h3><?php echo $row_DatosAnuncios['titulo'] ?></h3>
 		<span><?php echo $row_DatosAnuncios['mensaje'] ?></span> <br>
-		<?php echo $row_DatosAnuncios['autor'] ?>
+		<?php echo nombre($row_DatosAnuncios['autor']) ?>
 	</div>
 <?php } while($row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios)) ?>
 

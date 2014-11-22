@@ -47,4 +47,24 @@ if (!function_exists("GetSQLValueString")) {
     $dato = array($row_DatosWeb['url'], $row_DatosWeb['titulo'], $row_DatosWeb['admin']);
 
     mysql_free_result($DatosWeb);
+
+
+//RECIBE EL ID DE USUARIO Y DEVUELVE EL NOMBRE DEL USUARIO
+function nombre($iduser){
+    global $database_conexion, $conexion;
+
+    //CONSULTA BASE DATOS
+    mysql_select_db($database_conexion, $conexion);
+    $query_DatosFuncion = sprintf("SELECT user FROM z_users WHERE id=%s",
+                      GetSQLValueString($iduser, "int")); 
+    $DatosFuncion = mysql_query($query_DatosFuncion, $conexion) or die(mysql_error());
+    $row_DatosFuncion = mysql_fetch_assoc($DatosFuncion);
+    $totalRows_DatosFuncion = mysql_num_rows($DatosFuncion);
+
+    return $row_DatosFuncion['user']; //devuelve el nombre de usuario
+    
+    mysql_free_result($DatosFuncion);
+  }
+
 ?>
+
