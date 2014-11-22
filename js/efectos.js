@@ -15,12 +15,11 @@ function mostrar_capa_login(abrirocerrar){
 }
 
 //RECIBE LOS DATOS DEL FORMULARIO DE LOGUEO Y LOS ENVIA A LOGIN.PHP
-function login_ajax(usuario, password)
-{
+function login_ajax(user, pass){
 	$.ajax({
 		type: 'POST',
 		url: urlWeb + 'inc/login.php',
-		data: 'user=' + usuario + '&pass=' + password,
+		data: 'user=' + user + '&pass=' + pass,
 		success: function(html) {
 	   }
 	});
