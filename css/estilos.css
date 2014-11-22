@@ -5,6 +5,26 @@ body{
 	font-family: 'Lato', sans-serif;
 }
 
+.cursor{
+	cursor: pointer;
+}
+
+.derecha{
+	float: right;
+}
+
+h1,h2{
+	padding: 0px;
+}
+
+a{
+	color: #000;
+}
+
+a:hover{
+	color: #ccc;
+}
+
 .encabezado{
 	margin: 5px auto; /*asi se queda siempre en el centro*/
 	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
@@ -54,4 +74,32 @@ body{
 	font-size: 16px;
 	padding: 10px 5px;
 	list-style: none; /*para que no salga un puntito a la izquierda porque es un li*/
+}
+
+#fondonegro{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #666;
+	z-index: 99;
+	opacity: 0.5;
+}
+
+#flotantelogin{
+	z-index: 999;
+	border: 8px solid #fff;
+	box-shadow: 0px 0px 19px 1px #6D6D6D;
+	margin-top: -156px;
+	margin-left: -153px;
+	top: 50%;
+	left: 50%;
+	padding: 12px;
+	position: fixed;
+	width: 265px;
+	background-color: #fff;
+	border-radius: 15px;
+	padding-bottom: 15px;
+	font-size: 14px;
 }
