@@ -3,11 +3,11 @@
 //como es include del index no necesita la referencia a conexion.php
 
 //CONSULTA BASE DATOS
-    mysql_select_db($database_conexion, $conexion);
-    $query_DatosAnuncios = "SELECT * FROM z_posts ORDER BY id DESC";
-    $DatosAnuncios = mysql_query($query_DatosAnuncios, $conexion) or die(mysql_error());
-    $row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios);
-    $totalRows_DatosAnuncios = mysql_num_rows($DatosAnuncios);
+	mysql_select_db($database_conexion, $conexion);
+	$query_DatosAnuncios = "SELECT * FROM z_posts ORDER BY id DESC";
+	$DatosAnuncios = mysql_query($query_DatosAnuncios, $conexion) or die(mysql_error());
+	$row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios);
+	$totalRows_DatosAnuncios = mysql_num_rows($DatosAnuncios);
 
 ?>
 
