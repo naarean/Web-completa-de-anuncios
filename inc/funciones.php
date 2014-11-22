@@ -1,4 +1,4 @@
-<?php //ESTE ARCHIVO LE NECESITAMOS SIEMPRE ASI QUE LE LLAMAMOS DESDE CONEXION.PHP
+<?php //ESTE ARCHIVO LE NECESITAMOS SIEMPRE ASI QUE LE LLAMAMOS DESDE CONEXION.PHP, en el guardamos cosas como variables globales para php
 
 //FORMATEO BASE DE DATOS
 if (!function_exists("GetSQLValueString")) {
@@ -31,4 +31,20 @@ if (!function_exists("GetSQLValueString")) {
       return $theValue;
     }
 }
+
+//FORMATO DE CARACTERES
+    header('Content-Type: text/html; charset=UTF-8'); 
+
+
+//CONSULTA BASE DATOS
+    mysql_select_db($database_conexion, $conexion);
+    $query_DatosWeb = "SELECT * FROM z_datos";
+    $DatosWeb = mysql_query($query_DatosWeb, $conexion) or die(mysql_error());
+    $row_DatosWeb = mysql_fetch_assoc($DatosWeb);
+    $totalRows_DatosWeb = mysql_num_rows($DatosWeb);
+
+    //varibales globales para luego usarlas en páginas de php
+    $dato = array($row_DatosWeb['url'], $row_DatosWeb['titulo'], $row_DatosWeb['admin']);
+
+    mysql_free_result($DatosWeb);
 ?>

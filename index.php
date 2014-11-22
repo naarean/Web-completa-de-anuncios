@@ -15,12 +15,12 @@
 <body>
 	<header class="encabezado">
 		<div id="logo">
-			<img src="img/logo.png" width="220" height="80">
+			<a href="<?php echo $dato['0']?>"><img src="img/logo.png" width="220" height="80"></a>
 		</div>
 	</header>
 
 	<nav class="menu">
-		<li class="item_menu">Incio</li>
+		<a href="<?php echo $dato['0']?>"><li class="item_menu">Incio</li></a>
 		<li class="item_menu">Posts</li>
 		<li class="item_menu">Contacto</span>
 
@@ -41,7 +41,7 @@
 	</div>
 
 	<footer class="pie">
-		
+		Conctacto - Creado por Sergio Alegre
 	</footer>
 	<script>
 
