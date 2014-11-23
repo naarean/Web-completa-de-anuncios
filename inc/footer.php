@@ -1,3 +1,3 @@
 <footer class="pie">
-	Conctacto - Creado por Sergio Alegre
+	<div>Sergio Alegre - <a href="https://twitter.com/naarean">@naarean</a> - <a href="https://github.com/naarean">github.com/naarean</a></div>
 </footer>

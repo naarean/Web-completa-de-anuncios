@@ -54,3 +54,37 @@ function login_ajax(user, pass)
 		});
 	}
 }
+
+//PARA REGISTRAR USUARIOS, LA LLAMAMOS DESDE REGISTRO-USUARIO.PHP
+function registro_ajax(user, pass, pass2)
+{
+	if(user == '' || pass == '' || pass2 == '')
+	{
+		$("#error").slideDown(500);
+		$("#error").html("Faltan datos");
+	}
+	else if (pass != pass2)
+	{
+		$("#error").slideDown(500);
+		$("#error").html("Las Contraseñas no coinciden");
+	}
+	else if (( user != '' && pass != '' && pass2 != '') && (pass = pass2))  //todo correcto
+	{
+		$.ajax({
+			type: 'POST',
+			url: urlWeb + 'inc/alta-usuario.php',
+			data: 'user=' + user + '&pass=' + pass,
+			success: function(html) {
+				if (html == 'error')
+				{
+					$("#error").slideDown(500);
+					$("#error").html("Este nombre de usuario ya existe, elije otro");
+				}
+				else if (html == 'correcto')
+				{
+					$("#registro_usuario").html("Registro de usuario correcto");
+				}
+		   }
+		});
+	}
+}
