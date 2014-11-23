@@ -38,8 +38,8 @@
 	</script>
 
 	<div class="cuerpo">
+		<h2>Registro de usuarios</h2>
 		<div id="registro_usuario"> <!-- usamos esta capa para mostrar formulario antes de envialo o mostrar registro correcto al acabar -->
-			<h2>Registro de usuarios</h2>
 			<form onSubmit="return false" name="formRegistro">
 				Nombre: <br>
 				<input type="text" name="nombre_registro" value=""> <br>

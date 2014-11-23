@@ -143,3 +143,7 @@ a:hover{
 	padding: 10px;
 	float: left;
 }
+
+#error_login{
+	color: red;
+}

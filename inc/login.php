@@ -15,14 +15,15 @@ require_once('../conexion.php');
 
 
 
-    if($totalRows_DatosLogin==1) //si existe el usuarui le creamos dos variables de sesión
+    if($totalRows_DatosLogin==1) //si existe el usuario le creamos dos variables de sesión
     {
     	$_SESSION['iduser'] = $row_DatosLogin['id'];
     	$_SESSION['nombreuser'] = $row_DatosLogin['user'];
+        echo 'correcto';  //esto lo devolvemos al ajax para que sepa que mensaje mostrar
     }
     else
     {
-        echo "DATOS DE ACCESO INCORRECTOS";
+        echo 'error'; //esto lo devolvemos al ajax para que sepa que mensaje mostrar
     }
     
     mysql_free_result($DatosLogin);
