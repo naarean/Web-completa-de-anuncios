@@ -4,9 +4,9 @@
 
 		<form onSubmit="return false" id="formularioLogin">  <!-- para que no recarge la página al ser ajax necesitamos  onSubmi="return false" -->
 			Usuario: <br>
-			<input type="text" name="user" id="user"> <br>
+			<input type="text" name="user" id="user" class="mi_input"> <br>
 			Contrasese&ntilde;a: <br>
-			<input type="password" name="pass" id="pass"> <br>
+			<input type="password" name="pass" id="pass" class="mi_input"> <br>
 			<div id="error_login" style="display:none;"></div> <!-- capa oculta para mostrar errores -->
 			<input type="submit" id="miboton" class="cursor" onClick="login_ajax(user.value,pass.value);" value="Iniciar">
 		</form>

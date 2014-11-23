@@ -24,28 +24,18 @@
 
 	<?php include ('inc/menu.php') ?>
 
-	<script>
-	function registro_ajax(user, pass){
-		$.ajax({
-			type: 'POST',
-			url: urlWeb + 'inc/alta-usuario.php',
-			data: 'user=' + user + '&pass=' + pass,
-			success: function(html) {
-		   }
-		});
-		$("#registro_usuario").html("Registro de usuario correcto");
-	}
-	</script>
-
 	<div class="cuerpo">
 		<h2>Registro de usuarios</h2>
 		<div id="registro_usuario"> <!-- usamos esta capa para mostrar formulario antes de envialo o mostrar registro correcto al acabar -->
 			<form onSubmit="return false" name="formRegistro">
 				Nombre: <br>
-				<input type="text" name="nombre_registro" value=""> <br>
+				<input type="text" name="nombre_registro" value="" class="mi_input"> <br>
 				Contraseña: <br>
-				<input type="password" name="pass_registro" value=""> <br>
-				<input type="submit" value="Registro" onClick="registro_ajax(nombre_registro.value, pass_registro.value);">
+				<input type="password" name="pass_registro" value="" class="mi_input"> <br>
+				Repetir Contraseña: <br>
+				<input type="password" name="pass_registro2" value="" class="mi_input"> <br>
+				<input type="submit" value="Registro" onClick="registro_ajax(nombre_registro.value, pass_registro.value, pass_registro2.value);">
+				<div id="error" style="display:none"></div>
 			</form>
 		</div>
 	</div>
