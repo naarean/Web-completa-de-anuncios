@@ -154,3 +154,19 @@ a:hover{
 	width: 200px;
 	margin: 5px 0px;
 }
+
+#buscador{
+	float: right;
+	margin: 41px 12px 0px 0px;
+}
+
+#resultados_busqueda{
+	float: left;
+	position: absolute;
+	z-index: 99;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: none;
+	width: 163px;
+	padding: 4px;
+}

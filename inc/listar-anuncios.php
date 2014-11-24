@@ -1,4 +1,4 @@
-<?php //ESTE ARCHIVO lista en index.php los anuncios que haya en bbdd
+<?php //ESTE ARCHIVO recibe del buscador del header un texto de búsqueda
 
 //como es include del index no necesita la referencia a conexion.php
 
