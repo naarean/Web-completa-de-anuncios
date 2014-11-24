@@ -66,4 +66,36 @@ function nombre($iduser){
     mysql_free_result($DatosFuncion);
   }
 
+//RECIBE DOS PARAMETROS DE LOGIN.PHP Y CREA DOS COOKIES 
+function recordarsesion($user, $pass){
+
+  setcookie("usercookie", $user, time() + (365 * 24 * 60 * 60),"/"); //la barra final es para que sirve en todas las páginas del dominio
+  setcookie("passcookie", $pass, time() + (365 * 24 * 60 * 60),"/"); 
+
+}
+
+if(isset($_COOKIE['usercookie']) && isset($_COOKIE['passcookie']) && !isset($_SESSION['iduser'])) //si estan creadas estas cookies y no lo estan las variables de sesión, iniciamos sesion
+{
+  //CONSULTA BASE DATOS
+  mysql_select_db($database_conexion, $conexion);
+  $query_DatosLogin = sprintf("SELECT * FROM z_users WHERE user=%s AND password=%s",
+                    GetSQLValueString($_COOKIE['usercookie'], "text"),
+                    GetSQLValueString($_COOKIE['passcookie'], "text")); //la contraseña ya está en MD5 por eso no lo ponemos
+  $DatosLogin = mysql_query($query_DatosLogin, $conexion) or die(mysql_error());
+  $row_DatosLogin = mysql_fetch_assoc($DatosLogin);
+  $totalRows_DatosLogin = mysql_num_rows($DatosLogin);
+
+
+
+  if($totalRows_DatosLogin==1) //si existe el usuario le creamos dos variables de sesión
+  {
+    $_SESSION['iduser'] = $row_DatosLogin['id'];
+    $_SESSION['nombreuser'] = $row_DatosLogin['user'];
+  }
+  
+  mysql_free_result($DatosLogin);
+
+}
+
+
 ?>

@@ -29,6 +29,16 @@ function crear_cookie(valor){
 //RECIBE LOS DATOS DEL FORMULARIO DE LOGUEO Y LOS ENVIA A LOGIN.PHP
 function login_ajax(user, pass)
 {
+	//Comprobamos el checkbox de recordar datos
+	if($("#chekar").is(':checked')) 
+	{  
+		var recordar='on';
+	} 
+	else
+	{
+		recordar='off';	
+	}
+	
 	if (user == '' || pass == '') //si faltan datos
 	{
 		$("#error_login").slideDown(500); //es como display block pero ademas con transicion
@@ -39,7 +49,7 @@ function login_ajax(user, pass)
 		$.ajax({
 			type: 'POST',
 			url: urlWeb + 'inc/login.php',
-			data: 'user=' + user + '&pass=' + pass,
+			data: 'user=' + user + '&pass=' + pass + '&recordar=' + recordar,
 			success: function(respuesta) { 
 				if(respuesta == 'correcto') //la sesion esta inciada asi que le recargo la página
 				{ 

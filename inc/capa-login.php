@@ -7,6 +7,7 @@
 			<input type="text" name="user" id="user" class="mi_input"> <br>
 			Contrasese&ntilde;a: <br>
 			<input type="password" name="pass" id="pass" class="mi_input"> <br>
+			<input type="checkbox" id="chekar" value=""> Recordar sesi&oacute;n al cerrar? <br><br>
 			<div id="error_login" style="display:none;"></div> <!-- capa oculta para mostrar errores -->
 			<input type="submit" id="miboton" class="cursor" onClick="login_ajax(user.value,pass.value);" value="Iniciar">
 		</form>

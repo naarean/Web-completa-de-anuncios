@@ -20,6 +20,11 @@ require_once('../conexion.php');
     	$_SESSION['iduser'] = $row_DatosLogin['id'];
     	$_SESSION['nombreuser'] = $row_DatosLogin['user'];
         echo 'correcto';  //esto lo devolvemos al ajax para que sepa que mensaje mostrar
+
+        if($_POST['recordar'] == 'on') //si le hemos pedido que nos recuerde al cerrar el navegador
+        {
+            recordarsesion($row_DatosLogin['user'],$row_DatosLogin['password']);
+        }
     }
     else
     {
