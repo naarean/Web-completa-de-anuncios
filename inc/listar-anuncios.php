@@ -9,18 +9,26 @@
 	$row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios);
 	$totalRows_DatosAnuncios = mysql_num_rows($DatosAnuncios);
 
-?>
 
-
-<?php do { ?>
+if($totalRows_DatosAnuncios != 0)  //si hay algun anuncio les mostramos
+{
+ do { ?>
 	<div id="listado_anuncios"> 
 		<?php if($row_DatosAnuncios['imagen'] != '') { ?> <!-- si hay alguna imagen que la muestre -->
 			<img src="<?php echo $dato['0']?>img/upload/<?php echo $row_DatosAnuncios['imagen'] ?>" width="150" height="100" class="foto_miniatura_anuncio">
 		<?php } ?>
 		<h3><?php echo $row_DatosAnuncios['titulo'] ?></h3>
-		<span><?php echo $row_DatosAnuncios['mensaje'] ?></span> <br>
+		<span><?php $cortar=substr($row_DatosAnuncios['mensaje'], 0, 350)."..."; echo $cortar; ?></span> <br> <!--substr acorta un texto largo, en este caso muestra del caracter 0 al 350 y concatena ... -->
 		<?php echo nombre($row_DatosAnuncios['autor']) ?>
 	</div>
-<?php } while($row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios)) ?>
+<?php } while($row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios));
+}
+else 
+{
+	echo 'No hay anuncios en la base de datos';
+}
 
-<?php mysql_free_result($DatosAnuncios); ?>
+
+mysql_free_result($DatosAnuncios); 
+
+?>
