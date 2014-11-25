@@ -5,24 +5,24 @@ require_once('../conexion.php');
 
 //CONSULTA BASE DATOS
 mysql_select_db($database_conexion, $conexion);
-$query_DatosAnuncios = sprintf("SELECT * FROM z_posts WHERE titulo LIKE %s", 
+$query_DatosBusqueda = sprintf("SELECT * FROM z_posts WHERE titulo LIKE %s", 
 							GetSQLValueString("%" . $_POST['textoescrito'] . "%", "text"));
-$DatosAnuncios = mysql_query($query_DatosAnuncios, $conexion) or die(mysql_error());
-$row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios);
-$totalRows_DatosAnuncios = mysql_num_rows($DatosAnuncios); 
+$DatosBusqueda = mysql_query($query_DatosBusqueda, $conexion) or die(mysql_error());
+$row_DatosBusqueda = mysql_fetch_assoc($DatosBusqueda);
+$totalRows_DatosBusqueda = mysql_num_rows($DatosBusqueda); 
 
 
-if ($totalRows_DatosAnuncios == '') //no hay resultados
+if ($totalRows_DatosBusqueda == '') //no hay resultados
 { ?>
 	<span class="resultado_busqueda">No hay resultados para la búsqueda</span>
 <?php  }
-else if($totalRows_DatosAnuncios !='' ) //si hay resultados
+else if($totalRows_DatosBusqueda !='' ) //si hay resultados
 {
 	do { ?>
-		<a href="<?php echo $dato['0']?>ver-anuncio.php?id=<?php echo $row_DatosAnuncios['id'] ?>"><span class="resultado_busqueda"> <?php echo $row_DatosAnuncios['titulo'] ?></span></a><br>
-	<?php } while ($row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios)); 
+		<a href="<?php echo $dato['0']?>ver-anuncio.php?id=<?php echo $row_DatosBusqueda['id'] ?>"><span class="resultado_busqueda"> <?php echo $row_DatosBusqueda['titulo'] ?></span></a><br>
+	<?php } while ($row_DatosBusqueda = mysql_fetch_assoc($DatosBusqueda)); 
 } ?>
 
-<?php mysql_free_result($DatosAnuncios); 
+<?php mysql_free_result($DatosBusqueda); 
 
 ?>
