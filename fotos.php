@@ -1,4 +1,4 @@
-<?php require_once('conexion.php');
+<?php require_once('conexion.php'); //esta p´gina procesara las fotos del id de anuncio que le llega por get de insertar-anuncio.php
 
 if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder a agregar.php asi que te envio a index.php
 {
@@ -12,7 +12,7 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 <head>
 	<!-- <meta charset="iso-8859-1"> -->
 	<meta charset="UTF-8">
-	<title><?php echo $dato['1']?></title> <!-- variable global declarada en funciones.php -->
+	<title>Agregar imágenes</title> <!-- variable global declarada en funciones.php -->
 	<link rel="shortcut icon" type="img/x-icon" href="favicon.ico" />
 	<meta content='width-device-width', initial-scale=1, maximum-scale=1, name='viewport'><!-- Responsive -->
 	<!-- <link rel="stylesheet" type="text/css" href="fonts.googleapis.com/css?family=Lato"> -->
@@ -30,18 +30,32 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 	<?php include ('inc/header.php') ?>
 
 	<?php include ('inc/menu.php') ?>
-
+ 
+ 	<script>
+ 		function subir_fotos_ajax (){
+ 			var formData = new FormData($("#formFotos")[0]); //no se puede cambiar el nombre a esta variable o no funcionará
+ 			
+ 			$.ajax({
+				type: 'POST',
+				url: urlWeb + 'inc/subir-fotos.php',
+				data: formData,
+				contentType: false,
+				processData: false,
+				success: function(respuesta) {
+					$("#imagenes_subidas").html(respuesta);
+			   }
+			});
+ 		}
+ 	</script>
 
 	<div class="cuerpo">
-		<h2>Agregar anuncio</h2>
-		<form name="miform" action="inc/insertar-anuncio.php" method="POST" enctype="multipart/form-data">
-			Título: <br>
-			<input type="text" name="titulo" value="" class="titulo_anuncio"> <br>
-			Miniatura: <br>
-			<input type="file" name="imagen1" class="imagen_anuncio"> <br>
-			Descripción: <br>
-			<textarea name="mensaje" class="textarea_anuncio"></textarea> <br>
-			<input type="submit" value="Continuar" class="miboton">
+		<h2>Agregar imágenes</h2>
+		<div id="imagenes_subidas"></div>
+		<form method="POST" enctype="multipart/form-data" id="formFotos">
+			<input type="file" name="imagen2" onChange="subir_fotos_ajax();">
+			<input type="hidden" name="idpost" value="<?php echo $_GET['idpost']?>"> <!-- Capturamos el parametro que viene en la url idpost -->
+			<br><br>
+			<input type="submit" value="Publicar">
 		</form>
 	</div>
 
