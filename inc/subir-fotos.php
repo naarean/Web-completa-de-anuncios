@@ -12,7 +12,7 @@ $nombre_imagen = $_FILES['imagen2']['name'];
 //Insertar foto en bbdd
 $insertSQL = sprintf("INSERT INTO z_fotos (nombre, idpost) VALUES (%s, %s)",
                        GetSQLValueString($nombre_imagen, "text"),
-					   GetSQLValueString($_POST['idpost'], "int")); 
+					   GetSQLValueString($_SESSION['idpost'], "int")); //se le habiamos pasado por variable de sesion que es mas seguro
 
 mysql_select_db($database_conexion, $conexion);
 $Result1 = mysql_query($insertSQL, $conexion) or die(mysql_error());
@@ -20,7 +20,8 @@ $Result1 = mysql_query($insertSQL, $conexion) or die(mysql_error());
 
 //CONSULTA BASE DATOS
 mysql_select_db($database_conexion, $conexion);
-$query_DatosImagen = sprintf("SELECT * FROM z_fotos WHERE idpost = %s", $_POST['idpost'], "int");
+$query_DatosImagen = sprintf("SELECT * FROM z_fotos WHERE idpost = %s", 
+								$_SESSION['idpost'], "int");
 $DatosImagen = mysql_query($query_DatosImagen, $conexion) or die(mysql_error());
 $row_DatosImagen = mysql_fetch_assoc($DatosImagen);
 $totalRows_DatosImagen = mysql_num_rows($DatosImagen);

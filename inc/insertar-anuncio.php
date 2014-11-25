@@ -1,4 +1,6 @@
-<?php //ESTE ARCHIVO inserta los datos de formulario que le llegan de agregar.php, despues hace una consulta del campo time para sacar el id del anuncio que acabamos de insertar y poder pasarselo a fotos.php
+<?php //ESTE ARCHIVO inserta los datos de formulario que le llegan de agregar.php
+// despues hace una consulta del campo time para sacar el id del anuncio que acabamos de insertar y poder pasarselo a fotos.php
+//por seguridad para que no se vea en la url no lo enviaremos el idpost por GET lo enviaremos como variable de sesion
 
 require_once('../conexion.php');  
 
@@ -33,7 +35,9 @@ $idpost=$row_DatosId['id'];
 
 mysql_free_result($DatosId);
 
+$_SESSION['idpost'] = $idpost; //la guardamos como variable de sesion para que sea invisible al usuario
 
-header('Location:'.$dato['0'].'fotos.php?idpost='.$idpost); //que nos lleve despues de inserar en la bbdd a fotos.php
+
+header('Location:'.$dato['0'].'fotos.php'); //que nos lleve despues de inserar en la bbdd a fotos.php
 
 ?>

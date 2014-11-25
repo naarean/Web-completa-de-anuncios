@@ -53,7 +53,6 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 		<div id="imagenes_subidas"></div>
 		<form method="POST" enctype="multipart/form-data" id="formFotos">
 			<input type="file" name="imagen2" onChange="subir_fotos_ajax();">
-			<input type="hidden" name="idpost" value="<?php echo $_GET['idpost']?>"> <!-- Capturamos el parametro que viene en la url idpost -->
 			<br><br>
 			<input type="submit" value="Publicar">
 		</form>
