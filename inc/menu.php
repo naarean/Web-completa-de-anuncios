@@ -1,7 +1,7 @@
 <nav class="menu">
 	<a href="<?php echo $dato['0']?>"><li class="item_menu">Incio</li></a>
 	<li class="item_menu">Posts</li>
-	<li class="item_menu">Contacto</li>
+	<a href="<?php echo $dato['0']?>contacto.php"><li class="item_menu">Contacto</li></a>
 
 	<?php  if (isset($_SESSION['iduser'])) { ?> <!-- si esta loguado puedes agregar anuncios -->
 		<a href="<?php echo $dato['0']?>agregar.php"><li class="item_menu">Agregar</li></a>
