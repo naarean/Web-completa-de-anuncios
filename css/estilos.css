@@ -170,3 +170,13 @@ a:hover{
 	width: 163px;
 	padding: 4px;
 }
+
+.articulo{
+	border: 10x solid #ddd;
+	margin: 8px;
+	padding: 4px;
+}
+
+img{
+	max-width: 500px;
+}

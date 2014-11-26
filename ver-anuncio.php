@@ -4,12 +4,20 @@ require_once('conexion.php');
 
 $idpost = $_GET['id'];  //recogemos el parametro que recibe esta página
 
-//CONSULTA BASE DATOS
+//CONSULTA BASE DATOS para leer en z_posts
 mysql_select_db($database_conexion, $conexion);
 $query_DatosAnuncio = "SELECT * FROM z_posts WHERE id='$idpost'";
 $DatosAnuncio = mysql_query($query_DatosAnuncio, $conexion) or die(mysql_error());
 $row_DatosAnuncio = mysql_fetch_assoc($DatosAnuncio);
 $totalRows_DatosAnuncio = mysql_num_rows($DatosAnuncio);
+
+//CONSULTA BASE DATOS para leer en z_fotos
+mysql_select_db($database_conexion, $conexion);
+$query_DatosFoto = sprintf("SELECT * FROM z_fotos WHERE idpost=%s", $row_DatosAnuncio['id'], "int");
+$DatosFoto = mysql_query($query_DatosFoto, $conexion) or die(mysql_error());
+$row_DatosFoto = mysql_fetch_assoc($DatosFoto);
+$totalRows_DatosFoto = mysql_num_rows($DatosFoto);
+
 
 
 ?>
@@ -40,9 +48,18 @@ $totalRows_DatosAnuncio = mysql_num_rows($DatosAnuncio);
 
 
 	<div class="cuerpo">
-		<h1><?php echo $row_DatosAnuncio['titulo']?></h1>
-		<?php echo $row_DatosAnuncio['mensaje']?> <br>
-		<?php echo nombre($row_DatosAnuncio['autor'])?>
+		<article class="articulo">
+			<h1><?php echo $row_DatosAnuncio['titulo']?></h1>
+
+			<?php if($totalRows_DatosFoto != 0){ ?> <!-- si hay fotos que las muestre -->
+				<?php do{ ?>
+					<img src="<?php echo $dato['0']?>img/upload/<?php echo $row_DatosFoto['nombre']?>"> <br>
+				<?php } while ($row_DatosFoto = mysql_fetch_assoc($DatosFoto)); ?>
+			<?php } ?>
+
+			<?php echo $row_DatosAnuncio['mensaje']?> <br>
+			<?php echo nombre($row_DatosAnuncio['autor'])?>
+		</article>
 	</div>
 
 	<?php include ('inc/footer.php') ?>
@@ -55,3 +72,4 @@ $totalRows_DatosAnuncio = mysql_num_rows($DatosAnuncio);
 </html>
 
 <?php mysql_free_result($DatosAnuncio);  ?>
+<?php mysql_free_result($DatosFoto);  ?>

@@ -46,15 +46,19 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 			   }
 			});
  		}
+
+ 		function terminar_publicacion_anuncio(){
+ 			location.href = urlWeb + 'anuncio-publicado-ok.php';
+ 		}
  	</script>
 
 	<div class="cuerpo">
 		<h2>Agregar imágenes</h2>
 		<div id="imagenes_subidas"></div>
-		<form method="POST" enctype="multipart/form-data" id="formFotos">
+		<form onSubmit="return false" method="POST" enctype="multipart/form-data" id="formFotos">
 			<input type="file" name="imagen2" onChange="subir_fotos_ajax();">
 			<br><br>
-			<input type="submit" value="Publicar">
+			<input type="submit" value="Publicar" onClick="terminar_publicacion_anuncio();">
 		</form>
 	</div>
 
