@@ -1,4 +1,8 @@
-<?php require_once('conexion.php');?>
+<?php require_once('conexion.php');
+
+	$_SESSION['conteo']=0;  //variable que usaremos para la paginación
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -24,9 +28,11 @@
 
 	<?php include ('inc/menu.php') ?>
 
-
 	<div class="cuerpo">
-		<?php include ('inc/listar-anuncios.php') ?>
+		<div id="listar-ajax">
+			<?php include ('inc/listar-anuncios.php') ?> <br>
+		</div>
+		<input type="button" onClick="paginar_anuncios(2);" class="cargarmas" value="Cargar mas"> <!-- queremos mostrar de 2 en 2 anuncios -->
 	</div>
 
 	<?php include ('inc/footer.php') ?>

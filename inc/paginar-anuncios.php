@@ -1,10 +1,12 @@
-<?php //ESTE ARCHIVO lista anuncios
+<?php //ESTE ARCHIVO recibe por POST el numero de anuncios a paginar, y usa la variable de sesion de conteo para hacer una consulta a la bbdd y saber que anuncios mostrar
 
-//como es include del index no necesita la referencia a conexion.php
+require_once('../conexion.php');
+
+$_SESSION['conteo'] += $_POST['numero']; //cambiamos el índice al paginar y le incrementamos en el valor que llega por el ajax de paginar_anuncios()
 
 //CONSULTA BASE DATOS
 	mysql_select_db($database_conexion, $conexion);
-	$query_DatosAnuncios = "SELECT * FROM z_posts ORDER BY id DESC LIMIT 2";
+	$query_DatosAnuncios = sprintf("SELECT * FROM z_posts ORDER BY id DESC LIMIT %s,2", $_SESSION['conteo'], "int");  //cuando el limit lleva dos parametros el primero es el indice de inicio y el segundo el número de elementos
 	$DatosAnuncios = mysql_query($query_DatosAnuncios, $conexion) or die(mysql_error());
 	$row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios);
 	$totalRows_DatosAnuncios = mysql_num_rows($DatosAnuncios);
@@ -22,10 +24,6 @@ if($totalRows_DatosAnuncios != 0)  //si hay algun anuncio les mostramos
 		<?php echo nombre($row_DatosAnuncios['autor']) ?>
 	</div>
 <?php } while($row_DatosAnuncios = mysql_fetch_assoc($DatosAnuncios));
-}
-else 
-{
-	echo 'No hay anuncios en la base de datos';
 }
 
 

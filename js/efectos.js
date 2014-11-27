@@ -98,3 +98,24 @@ function registro_ajax(user, pass, pass2)
 		});
 	}
 }
+
+//LLAMADO DESDE INDEX.PHP PAARA PAGINAR ANUNCIOS, RECIBE COMO PARAMETRO EL NUMERO DE ANUNCIOS A PAGINAR
+function paginar_anuncios(anuncios_a_paginar)
+{
+	$.ajax({
+		type: 'POST',
+		url: urlWeb + 'inc/paginar-anuncios.php',
+		data: 'numero=' + anuncios_a_paginar,
+		success: function(respuesta) {
+			if (respuesta!='') //aun hay anuncios a mostrar
+			{
+				$("#listar-ajax").append(respuesta);  //añade el contenido a la capa listar-ajax
+				//$("#listar-ajax").html(respuesta); //con esta opcion paginariamos sin añadir, sobreesxribiendo el html
+			}
+			else if (respuesta =='') //no hay mas anuncios, ocultamos el botón de cargar mas
+			{
+				$(".cargarmas").css("display","none");
+			}
+	   }
+	});
+}

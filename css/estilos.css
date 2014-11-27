@@ -50,6 +50,11 @@ a:hover{
 	padding: 8px
 }
 
+.cargarmas{
+	margin-left: 400px;
+	padding: 4px;
+}
+
 .pie{
 	margin: 5px auto; /*asi se queda siempre en el centro*/
 	max-width: 965px; /*indicando un maximo permites que sea mas pequeño*/
