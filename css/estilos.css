@@ -185,3 +185,31 @@ a:hover{
 img{
 	max-width: 500px;
 }
+
+/*CHAT*/
+#listar_chat{
+	border: 1px solid #ddd;
+	padding: 3px;
+	width: 300px;
+	height: 300px;
+	overflow-y: scroll;  /*para que tenga scroll y los span no la desborden*/
+}
+
+.listas_chat{
+	float: left;
+	padding: 4px;
+	border: 1px solid #ddd;
+	width: 275px;
+	margin-bottom: 4px;
+}
+
+.chatinput{
+	padding: 10px 4px;
+	width: 300px;
+	border: 1px solid #ddd
+}
+
+.hacecuanto{
+	font-size: 10px;
+	color: #999;
+}

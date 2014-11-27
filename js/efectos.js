@@ -119,3 +119,12 @@ function paginar_anuncios(anuncios_a_paginar)
 	   }
 	});
 }
+
+//actualiza el contenido de un div cada segundo
+function refrescar()
+{
+	setInterval(function(){
+		$("#listar_chat").load('mensajes.php'); //cada segundo saca todo lo que hay en bbdd de chat
+		$("#listar_chat").scrollTop($("#listar_chat")[0].scrollHeight); //para que haga scroll solo y muestre siempre el último mensaje
+	},1000)
+}
