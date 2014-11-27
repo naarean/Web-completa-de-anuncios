@@ -128,3 +128,40 @@ function refrescar()
 		$("#listar_chat").scrollTop($("#listar_chat")[0].scrollHeight); //para que haga scroll solo y muestre siempre el último mensaje
 	},1000)
 }
+
+
+//Controla el formulario de contacto.php
+function contacto_ajax(email, numero2)
+{
+	var numero1 = parseInt($("#numero1").html());   //lo recogemos del formulario y lo convertimos a entero
+
+	if (numero1 != numero2) //captcha incorrecto
+	{
+		$("#error_contacto").slideDown(500); //es como display block pero ademas con transicion
+		$("#error_contacto").html("Captcha inválido");
+	}
+	else if (numero1 == numero2) //captcha correcto
+	{
+		re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+
+		if (re.exec(email))  // si es email válido
+		{
+			var formserializado = $("#formContacto");
+
+			$.ajax({
+				type: 'POST',
+				url: urlWeb + 'inc/peticion-contacto.php',
+				data: formserializado.serialize(),  //serializamos el formulario
+				success: function(html) {
+			   }
+			});
+
+			$("#respuesta").html("Email enviado");
+		}
+		else if (!re.exec(email)) //si no es un email
+		{
+			$("#error_contacto").slideDown(500); //es como display block pero ademas con transicion
+			$("#error_contacto").html("Email no válido");
+		}
+	}
+}

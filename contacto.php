@@ -23,34 +23,7 @@
 	<?php include ('inc/header.php') ?>
 
 	<?php include ('inc/menu.php') ?>
-
-	<script>
-		function contacto_ajax(email)
-		{
-			re=/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-
-			if (re.exec(email))  // si es email válido
-			{
-				var formserializado = $("#formContacto");
-
-				$.ajax({
-					type: 'POST',
-					url: urlWeb + 'inc/peticion-contacto.php',
-					data: formserializado.serialize(),  //serializamos el formulario
-					success: function(html) {
-				   }
-				});
-
-				$("#respuesta").html("Email enviado");
-
-			}
-			else if (!re.exec(email)) //si no es un email
-			{
-				$("#error_contacto").slideDown(500); //es como display block pero ademas con transicion
-				$("#error_contacto").html("Email no válido");
-			}
-		}
-	</script>
+	
 
 	<div class="cuerpo">
 		<h1>Contacto</h1>
@@ -61,9 +34,11 @@
 				Email: <br>
 				<input type="email" name="emails" value="" class="mi_input"> <br>
 				Mensaje: <br>
-				<textarea name="mensajes" class="textarea_anuncio"></textarea> <br>
+				<textarea name="mensajes" class="textarea_anuncio"></textarea> <br><br>
+				<span class="captcha" id="numero1"><?php echo rand(999,9999) ?></span> <br>
+				<input placeholder="Introduce el número" type="text" name="numero2" class="mi_input" id="numero2" value=""> <br><br>
 				<div id="error_contacto" style="display:none"></div>
-				<input type="submit" value="Enviar" onClick="contacto_ajax(emails.value);"> <!-- Solo paso el email xq necesito comprobarlo, el resto de campos no pongo porque van a ser serializarlo -->
+				<input type="submit" value="Enviar" onClick="contacto_ajax(emails.value, numero2.value);"> <!-- Solo paso el email xq necesito comprobarlo, el resto de campos no pongo porque van a ser serializarlo -->
 			</form>
 		</div>
 	</div>

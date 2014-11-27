@@ -213,3 +213,10 @@ img{
 	font-size: 10px;
 	color: #999;
 }
+
+/*CONTACTO*/
+.captcha{
+	background: #0cf;
+	border: 1px solid #ddd;
+	padding: 8px 38px;
+}
