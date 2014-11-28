@@ -30,7 +30,16 @@
 		<div id="respuesta">
 			<form onSubmit="return false" name="formContacto">
 				Nombre: <br>
-				<input type="text" name="nombre_registro" value="" class="mi_input"> <br>
+				<!-- Si ya esta logueado, sacamos el nombre por variable de sesión -->
+			<?php	if (isset($_SESSION['iduser']))
+					{ ?>
+						<input type="text" name="nombre_registro" value="<?php echo nombre($_SESSION['iduser'])?>" disabled class="mi_input"> <br> <!-- con el disabled no permitimos cambiar el valor -->
+			<?php	}
+					else
+					{ ?>
+						<input type="text" name="nombre_registro" value="" class="mi_input"> <br>
+			<?php	} ?>
+
 				Email: <br>
 				<input type="email" name="emails" value="" class="mi_input"> <br>
 				Mensaje: <br>

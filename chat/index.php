@@ -49,8 +49,13 @@
 		</div>
 		<br>
 		<form onSubmit="agregar_chat(mensajes.value); return false;"> <!-- QUe llame a la función y no se recargue -->
-			<input type="text" name="mensajes" id="input_mensaje" class="chatinput"> <br>
-			<input type="submit" value="Enviar">
+			<?php if(isset($_SESSION['iduser']))
+				  { ?>
+				<input type="text" name="mensajes" id="input_mensaje" class="chatinput"> <br>
+				<input type="submit" value="Enviar">
+			<?php } else {
+				echo "Debe iniciar sesión para utilizar el Chat";
+			} ?>
 		</form>
 	</div>
 
