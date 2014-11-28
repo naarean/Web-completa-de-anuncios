@@ -7,19 +7,20 @@ require_once('../conexion.php');
 if ($_FILES['imagen1']['type'] == "image/png" || $_FILES['imagen1']['type'] == "image/jpg" || $_FILES['imagen1']['type'] == "image/jpeg")
 {
 	//Subir imagen
-	$nombre_imagen = rand().$_FILES['imagen1']['name'];
+	$nombre_imagen = $_FILES['imagen1']['name'];
 	    move_uploaded_file($_FILES['imagen1']['tmp_name'], "../img/upload/".$nombre_imagen);
 }
 
 $tiempocotejo=rand(); //numero aleatorio que pasaremos a fotos.php para saber que anuncio estamos insertando
 
 //Insertar anuncio
-$insertSQL = sprintf("INSERT INTO z_posts (titulo, mensaje, autor, imagen, time) VALUES (%s, %s, %s, %s, %s)",
+$insertSQL = sprintf("INSERT INTO z_posts (titulo, mensaje, autor, imagen, time, categoria) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['titulo'], "text"),
                        GetSQLValueString($_POST['mensaje'], "text"),
                        GetSQLValueString($_SESSION['iduser'], "int"),
                        GetSQLValueString($nombre_imagen, "text"),
-					   GetSQLValueString($tiempocotejo, "int")); 
+					   GetSQLValueString($tiempocotejo, "int"),
+					   GetSQLValueString($_POST['categoria'], "int")); 
 
 mysql_select_db($database_conexion, $conexion);
 $Result1 = mysql_query($insertSQL, $conexion) or die(mysql_error());

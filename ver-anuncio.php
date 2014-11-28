@@ -56,9 +56,10 @@ $totalRows_DatosFoto = mysql_num_rows($DatosFoto);
 					<img src="<?php echo $dato['0']?>img/upload/<?php echo $row_DatosFoto['nombre']?>"> <br>
 				<?php } while ($row_DatosFoto = mysql_fetch_assoc($DatosFoto)); ?>
 			<?php } ?>
-
+			
 			<?php echo $row_DatosAnuncio['mensaje']?> <br>
-			<?php echo nombre($row_DatosAnuncio['autor'])?>
+			Publicado por: <?php echo nombre($row_DatosAnuncio['autor'])?> <br>
+			Categoría: <?php echo categoria($row_DatosAnuncio['categoria'])?>
 		</article>
 	</div>
 

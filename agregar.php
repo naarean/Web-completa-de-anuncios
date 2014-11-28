@@ -37,6 +37,13 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 		<form name="miform" action="inc/insertar-anuncio.php" method="POST" enctype="multipart/form-data">
 			Título: <br>
 			<input type="text" name="titulo" value="" class="titulo_anuncio"> <br>
+			Categoría: <br>
+			<select name="categoria" id="categoria">
+				<option value="0">Seleccionar categoría</option>
+				<option value="1">HTML5</option>
+				<option value="2">CSS3</option>
+				<option value="3">AJAX</option>
+			</select> <br><br>
 			Miniatura: <br>
 			<input type="file" name="imagen1" class="imagen_anuncio"> <br>
 			Descripción: <br>

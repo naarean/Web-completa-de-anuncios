@@ -134,4 +134,11 @@ function tiempo_transcurrido($fecha) {
 }
 
 
+//RECIBE UN NÚMERO Y DEVUELVE EL NOMBRE DE LA CATEGORÍA
+function categoria($numero){
+  if ($numero =='1') return 'HTML5';
+  if ($numero =='2') return 'CSS3';
+  if ($numero =='3') return 'AJAX';
+}
+
 ?>
