@@ -31,10 +31,32 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 
 	<?php include ('inc/menu.php') ?>
 
+	<script>
+		//VALIDA EL CONTENIDO DE LOS CAMPOS DEL FORMULARIO
+		function validar_post(titulo, categoria, imagen1, mensaje){
+			if (titulo!='' && categoria!='0' && imagen1!='' && mensaje!='') //0 en categoría que es el valor nulo del option dentro de un select
+			{
+				return true;  //para que funcione en el form tenemos onSumbit="return nombre_funcion();"
+			}
+			else if (titulo == '' || mensaje == '')
+			{
+				$("#error4").slideDown(500);
+				$("#error4").html("Rellene los campos de texto");
+				return false;
+			}
+			else if (categoria == 0)
+			{
+				$("#error4").slideDown(500);
+				$("#error4").html("Selecione Categoría");
+				return false;
+			}
+		}
+	</script>
+
 
 	<div class="cuerpo">
 		<h2>Agregar anuncio</h2>
-		<form name="miform" action="inc/insertar-anuncio.php" method="POST" enctype="multipart/form-data">
+		<form onSubmit="return validar_post(titulo.value, categoria.value, imagen1.value, mensaje.value);" name="miform" action="inc/insertar-anuncio.php" method="POST" enctype="multipart/form-data">
 			Título: <br>
 			<input type="text" name="titulo" value="" class="titulo_anuncio"> <br>
 			Categoría: <br>
@@ -48,6 +70,7 @@ if (!isset($_SESSION['iduser'])) //si no has iniciado sesión no puedes acceder 
 			<input type="file" name="imagen1" class="imagen_anuncio"> <br>
 			Descripción: <br>
 			<textarea name="mensaje" class="textarea_anuncio"></textarea> <br>
+			<div id="error4" style="display:none"></div>
 			<input type="submit" value="Continuar" class="miboton">
 		</form>
 	</div>

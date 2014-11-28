@@ -10,6 +10,10 @@ if ($_FILES['imagen2']['type'] == "image/png" || $_FILES['imagen2']['type'] == "
 	$nombre_imagen = $_FILES['imagen2']['name'];
 	    move_uploaded_file($_FILES['imagen2']['tmp_name'], "../img/upload/".$nombre_imagen);
 }
+else
+{
+	$nombre_imagen =''; //para que no de error si no metemos foto ya que necesitamos un valor para el insert aunque sea null
+}
 
 
 //Insertar foto en bbdd
