@@ -4,10 +4,12 @@
 
 require_once('../conexion.php');  
 
-//Subir imagen
-$nombre_imagen = rand().$_FILES['imagen1']['name'];
-    move_uploaded_file($_FILES['imagen1']['tmp_name'], "../img/upload/".$nombre_imagen);
-
+if ($_FILES['imagen1']['type'] == "image/png" || $_FILES['imagen1']['type'] == "image/jpg" || $_FILES['imagen1']['type'] == "image/jpeg")
+{
+	//Subir imagen
+	$nombre_imagen = rand().$_FILES['imagen1']['name'];
+	    move_uploaded_file($_FILES['imagen1']['tmp_name'], "../img/upload/".$nombre_imagen);
+}
 
 $tiempocotejo=rand(); //numero aleatorio que pasaremos a fotos.php para saber que anuncio estamos insertando
 

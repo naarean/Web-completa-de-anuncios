@@ -3,10 +3,13 @@
 
 require_once('../conexion.php');  
 
-//Subir imagen
-$nombre_imagen = $_FILES['imagen2']['name'];
-    move_uploaded_file($_FILES['imagen2']['tmp_name'], "../img/upload/".$nombre_imagen);
 
+if ($_FILES['imagen2']['type'] == "image/png" || $_FILES['imagen2']['type'] == "image/jpg" || $_FILES['imagen2']['type'] == "image/jpeg")
+{
+	//Subir imagen
+	$nombre_imagen = $_FILES['imagen2']['name'];
+	    move_uploaded_file($_FILES['imagen2']['tmp_name'], "../img/upload/".$nombre_imagen);
+}
 
 
 //Insertar foto en bbdd
