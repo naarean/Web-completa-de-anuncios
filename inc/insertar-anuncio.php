@@ -1,5 +1,7 @@
 <?php //ESTE ARCHIVO inserta los datos de formulario que le llegan de agregar.php
-// despues hace una consulta del campo time para sacar el id del anuncio que acabamos de insertar y poder pasarselo a fotos.php
+// despues hace una consulta del campo time para sacar el id del anuncio que acabamos de insertar y poder hacer 2 cosas
+// 1º actualizar el campo seo para que la url no solo dependa del titulo sino tambien de la id para evitar urls duplicadas
+// 2º pasarle el id a fotos.php
 //por seguridad para que no se vea en la url no lo enviaremos el idpost por GET lo enviaremos como variable de sesion
 
 require_once('../conexion.php');  
@@ -19,13 +21,14 @@ else
 $tiempocotejo=rand(); //numero aleatorio que pasaremos a fotos.php para saber que anuncio estamos insertando
 
 //Insertar anuncio
-$insertSQL = sprintf("INSERT INTO z_posts (titulo, mensaje, autor, imagen, time, categoria) VALUES (%s, %s, %s, %s, %s, %s)",
+$insertSQL = sprintf("INSERT INTO z_posts (titulo, mensaje, autor, imagen, time, categoria, seo) VALUES (%s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['titulo'], "text"),
                        GetSQLValueString($_POST['mensaje'], "text"),
                        GetSQLValueString($_SESSION['iduser'], "int"),
                        GetSQLValueString($nombre_imagen, "text"),
 					   GetSQLValueString($tiempocotejo, "int"),
-					   GetSQLValueString($_POST['categoria'], "int")); 
+					   GetSQLValueString($_POST['categoria'], "int"),
+					   GetSQLValueString(url_amigable($_POST['titulo']), "text"));  //URL amigable
 
 mysql_select_db($database_conexion, $conexion);
 $Result1 = mysql_query($insertSQL, $conexion) or die(mysql_error());
@@ -40,6 +43,15 @@ $totalRows_DatosId = mysql_num_rows($DatosId);
 
 //de la fila obtenida por la consulta sacamos el id
 $idpost=$row_DatosId['id'];
+
+
+//Update para que el campo seo sea id+seo ya que sino podría haber dos urls iguales con solo poner el mismo título al anuncio
+$updateSQL = sprintf("UPDATE z_posts SET seo=%s WHERE id=%s",
+			   		GetSQLValueString($idpost.'-'.url_amigable($_POST['titulo']), "text"), //ej: 21-Actualizar-datos-del-programa
+               		GetSQLValueString($idpost, "int"));
+mysql_select_db($database_conexion, $conexion);
+$Result1 = mysql_query($updateSQL, $conexion) or die(mysql_error());
+
 
 mysql_free_result($DatosId);
 

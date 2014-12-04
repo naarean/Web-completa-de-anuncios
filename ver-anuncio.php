@@ -2,7 +2,7 @@
 
 require_once('conexion.php');
 
-$idpost = $_GET['id'];  //recogemos el parametro que recibe esta página
+$idpost = saber_id($_GET['code']);  //recogemos el parametro que recibe esta página del .htaccess y con la funcion saber_id lo transformamos al id que necesitaremos para saber que anuncio visualizar
 
 //CONSULTA BASE DATOS para leer en z_posts
 mysql_select_db($database_conexion, $conexion);
@@ -28,12 +28,12 @@ $totalRows_DatosFoto = mysql_num_rows($DatosFoto);
 	<!-- <meta charset="iso-8859-1"> -->
 	<meta charset="UTF-8">
 	<title><?php echo $row_DatosAnuncio['titulo']?></title>
-	<link rel="shortcut icon" type="img/x-icon" href="favicon.ico" />
+	<link rel="shortcut icon" type="img/x-icon" href="<?php echo $dato['0']?>favicon.ico" />
 	<meta content='width-device-width', initial-scale=1, maximum-scale=1, name='viewport'><!-- Responsive -->
 	<!-- <link rel="stylesheet" type="text/css" href="fonts.googleapis.com/css?family=Lato"> -->
-	<link rel="stylesheet" href="css/estilos.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/efectos.js">></script>
+	<link rel="stylesheet" href="<?php echo $dato['0']?>css/estilos.css">
+	<script src="<?php echo $dato['0']?>js/jquery.min.js"></script>
+	<script src="<?php echo $dato['0']?>js/efectos.js">></script>
 </head>
 <body>
 

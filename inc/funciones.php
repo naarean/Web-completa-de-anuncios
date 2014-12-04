@@ -141,4 +141,42 @@ function categoria($numero){
   if ($numero =='3') return 'AJAX';
 }
 
+//RECIBE UN TITULO Y GENERA UNA CADENA DE URL AMIGABLE CON EL TÍTULO
+function url_amigable($url) {
+// Tranformamos todo a minusculas
+$url = strtolower($url);
+//Rememplazamos caracteres especiales latinos
+$find = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
+$repl = array('a', 'e', 'i', 'o', 'u', 'n');
+$url = str_replace ($find, $repl, $url);
+// Añadimos los guiones
+$find = array(' ', '&', '\r\n', '\n', '+'); 
+$url = str_replace ($find, '-', $url);
+// Eliminamos y Reemplazamos demás caracteres especiales
+$find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
+$repl = array('', '-', '');
+$url = preg_replace ($find, $repl, $url);
+return $url;
+}
+
+
+//RECOGE la url amigable y devuelve a que id de z_posts corresponde. La llamamos desde ver-anuncios.php
+function saber_id($seo)
+{
+  global $database_conexion, $conexion;
+
+  //CONSULTA BASE DATOS
+  mysql_select_db($database_conexion, $conexion);
+  $query_DatosFuncion = sprintf("SELECT * FROM z_posts WHERE seo=%s",
+                    GetSQLValueString($seo, "text"));
+  $DatosFuncion = mysql_query($query_DatosFuncion, $conexion) or die(mysql_error());
+  $row_DatosFuncion = mysql_fetch_assoc($DatosFuncion);
+  $totalRows_DatosFuncion = mysql_num_rows($DatosFuncion);
+
+  return $row_DatosFuncion['id']; //devuelve el id del anuncio a visualizar en ver-anuncios
+  
+  mysql_free_result($DatosFuncion);
+}
+
+
 ?>

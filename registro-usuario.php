@@ -31,9 +31,10 @@
 				Nombre: <br>
 				<input type="text" name="nombre_registro" value="" class="mi_input"> <br>
 				Contraseña: <br>
-				<input type="password" name="pass_registro" value="" class="mi_input"> <br>
+				<input type="password" name="pass_registro" value=""> <br>
 				Repetir Contraseña: <br>
-				<input type="password" name="pass_registro2" value="" class="mi_input"> <br>
+				<input type="password" name="pass_registro2" value=""> <br>
+
 				<input type="submit" value="Registro" onClick="registro_ajax(nombre_registro.value, pass_registro.value, pass_registro2.value);">
 				<div id="error" style="display:none"></div>
 			</form>
