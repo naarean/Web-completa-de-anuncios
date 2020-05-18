@@ -7,7 +7,7 @@ REEMPLAZAR: Web-completa-de-anuncios, TITULO, DESCRIPCION, DESCRIPCION2, DEMO, T
 <br />
 <p align="center">
   <a href="https://github.com/sergioalegre/Web-completa-de-anuncios">
-    <img src="http://naarean.es/logo.JPG" alt="Logo" width="80" height="80">
+    <img src="http://sergioalegre.es/logo.JPG" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center"><!-- TITULO -->Web-completa-de-anuncios</h3>
@@ -18,7 +18,7 @@ REEMPLAZAR: Web-completa-de-anuncios, TITULO, DESCRIPCION, DESCRIPCION2, DEMO, T
     <a href="https://github.com/sergioalegre/Web-completa-de-anuncios"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <!-- DEMO --><a href="http://naarean.es/Programacion/_Curso2014/">View Demo</a>
+    <!-- DEMO --><a href="http://sergioalegre.es/Programacion/_Curso2014/">View Demo</a>
     ·
     <a href="https://github.com/sergioalegre/Web-completa-de-anuncios/issues">Report Bug</a>
     ·
@@ -29,11 +29,11 @@ REEMPLAZAR: Web-completa-de-anuncios, TITULO, DESCRIPCION, DESCRIPCION2, DEMO, T
 
 ## About The Project & Demo link
 <!-- DESCRIPCION2 --> <!-- DEMO -->
-Web completa de PHP, MySQL, AJAX, HTML5, CSS3, JQuery, Javascript para backend en MySQL.  <a href="http://naarean.es/Programacion/_Curso2014/">Visita la demo aqui</a>
+Web completa de PHP, MySQL, AJAX, HTML5, CSS3, JQuery, Javascript para backend en MySQL.  <a href="http://sergioalegre.es/Programacion/_Curso2014/">Visita la demo aqui</a>
 <br><br>
 <p align="center">
-  <a href="http://naarean.es/Programacion/_Curso2014/">
-    <img src="http://naarean.es/Programacion/_Curso2014/captura.PNG" alt="Logo" width="360" height="">
+  <a href="http://sergioalegre.es/Programacion/_Curso2014/">
+    <img src="http://sergioalegre.es/Programacion/_Curso2014/captura.PNG" alt="Logo" width="360" height="">
   </a>
 </p>
 
@@ -44,13 +44,13 @@ LinkedIn: https://www.linkedin.com/in/sergioalegre
 
 
 ### Built With
-* [PHP](PHP)
-* [AJAX](AJAX)
-* [JQUERY](JQUERY)
-* [MYSQL](MYSQL)
-* [HTML5](HTML5)
-* [CSS3](CSS3)
-* [JS](JS)
+* PHP
+* AJAX
+* JQUERY
+* MYSQL
+* HTML5
+* CSS3
+* JavaScript
 
 
 ## Getting Started
@@ -86,11 +86,6 @@ Email: sergio.alegre.arribas EN gmail.com
 <br>
 LinkedIn: https://www.linkedin.com/in/sergioalegre
 
-
-## Acknowledgements
-* []()
-* []()
-* []()
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
